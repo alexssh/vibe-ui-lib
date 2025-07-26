@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationMap": false,
+    "noEmit": false,
+    "outDir": "dist/tmp-types",
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "exclude": ["**/*.stories.ts", "**/*.stories.tsx", "**/*.scss"]
+}

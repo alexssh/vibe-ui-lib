@@ -1,0 +1,17 @@
+.vibe-Test {
+  background-color: red;
+
+  &:hover {
+    background-color: blue;
+  }
+
+  &_variant {
+    &-primary {
+      border: 2px solid yellow;
+    }
+
+    &-secondary {
+      border: 2px solid green;
+    }
+  }
+}
