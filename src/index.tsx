@@ -1,2 +1,2 @@
-export { Test } from "./components/Test/Test"
-export type { TestProps } from "./components/Test/Test.types"
+export { Example } from "./components/Example/Example"
+export type { ExampleProps } from "./components/Example/Example.types"

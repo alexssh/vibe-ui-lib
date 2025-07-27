@@ -1,6 +1,6 @@
 import type * as React from "react"
 
-export interface TestProps {
+export interface ExampleProps {
   variant?: "primary"
   children?: React.ReactNode
   onClick?: () => void
