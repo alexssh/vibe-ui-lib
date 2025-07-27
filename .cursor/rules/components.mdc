@@ -39,6 +39,7 @@ alwaysApply: true
 - Set `displayName = '{ComponentName}'` for React DevTools.
 - Apply default values via ES2015 parameter defaults, not defaultProps.
 - Avoid `any;` prefer `unknown` plus type narrowing.
+- Always wrap ref‑forwarding components with the project helper typedForwardRef located at `src/utils/typedForwardRef.ts`. This preserves full prop‑intelligence in VS Code and avoids the common “ref is missing in props validation” pitfall.
 - Document every exported type, interface, enum and public prop with JSDoc so VS Code shows rich IntelliSense, for instance:
 
   ````ts

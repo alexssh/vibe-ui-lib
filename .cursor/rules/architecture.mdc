@@ -8,7 +8,7 @@ alwaysApply: true
 - Subcomponents follow the **same structure** inside the parent folder.
 - Export the component from `index.ts` **exactly** as:
   ```ts
-  export { default } from './{ComponentName}';
+  export { {ComponentName} } from './{ComponentName}';
   export type { {ComponentName}Props } from './{ComponentName}.types';
   ```
 
