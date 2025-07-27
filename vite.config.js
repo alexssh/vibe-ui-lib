@@ -1,10 +1,17 @@
 import { defineConfig } from "vite"
-import react from "@vitejs/plugin-react"
+import react from "@vitejs/plugin-react-swc"
+import dts from "vite-plugin-dts"
+import svgr from "vite-plugin-svgr"
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    dts({
+      insertTypesEntry: true,
+    }),
+    svgr(),
+  ],
   build: {
-    minify: true,
     lib: {
       entry: "src/index.tsx",
       name: "vibe-ui-lib",
@@ -14,7 +21,10 @@ export default defineConfig({
     rollupOptions: {
       external: ["react", "react-dom"],
       output: {
-        exports: "named",
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
       },
     },
   },

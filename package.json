@@ -15,7 +15,8 @@
     "@types/classnames": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@vitejs/plugin-react": "^4.7.0",
-    "classnames": "^2.5.1",
+    "@vitejs/plugin-react-swc": "^3.3.2",
+    "classnames": "^2.3.2",
     "eslint": "^8.54.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
@@ -29,6 +30,7 @@
     "typescript": "^5.4.0",
     "vite": "^5.4.17",
     "vite-plugin-dts": "^4.5.3",
+    "vite-plugin-svgr": "^4.3.0",
     "storybook-addon-sass-postcss": "^0.3.2"
   },
   "scripts": {
