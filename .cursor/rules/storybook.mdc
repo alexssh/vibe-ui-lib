@@ -1,0 +1,31 @@
+---
+alwaysApply: true
+---
+
+# Storybook convention
+
+- Each component lives in its own file src/components/{ComponentName}/{ComponentName}.stories.tsx (CSF format).
+- Use autodocs `(tags: ['autodocs'])`.
+- Include a short MDX description at the top (<Meta of="{ComponentName}" />) if additional usage notes are required.
+- Export the component’s prop types in the docs table automatically; no manual tables.
+
+# Storybook args & controls guidelines
+
+- Expose every public prop (except `className`, `style`, and `data‑*`) via Storybook Controls.
+- For enum‑like props, provide a union type and set the control to radio or select.
+- Organise controls alphabetically; hide internal/technical props with `table: { disable: true }`.
+
+# Storybook minimal example guidelines
+
+- Supply at least two stories:
+
+| Story                              | Purpose                                   | Required? |
+| ---------------------------------- | ----------------------------------------- | --------- |
+| `Playground`                       | fully controllable example, bound to args | Yes       |
+| `Primary` (or design‑spec default) | canonical look                            | Yes       |
+| `WithIcon`, `Compact`, etc.        | edge cases                                | Optional  |
+
+- Use the Template pattern for re‑use:
+  ```ts
+    const Template: StoryFn<{ComponentName}Props> = args => <{ComponentName} {...args} />
+  ```
