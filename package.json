@@ -34,7 +34,7 @@
     "vite-plugin-svgr": "^4.3.0"
   },
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && npm run lint",
     "watch": "vite build --watch",
     "prod": "vite build && tsc -p tsconfig.types.json && node ./scripts/clean-scss-imports.js && rollup -c rollup.config.dts.js && rm -rf dist/tmp-types",
     "lint": "tsc && eslint . || true",
