@@ -1,17 +1,52 @@
+@use "../../variables" as v;
+
 .vibe-Example {
-  background-color: red;
+  background-color: v.$accented-bg-default;
+  color: v.$accented-text-default;
+  border: none;
+  border-radius: v.$radius-default;
+  padding: v.$spacing-s v.$spacing-m;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s ease;
 
   &:hover {
-    background-color: blue;
+    background-color: v.$accented-bg-hover;
+    color: v.$accented-text-hover;
   }
 
-  &_variant {
+  &:focus-visible {
+    background-color: v.$accented-bg-focus;
+    color: v.$accented-text-focus;
+    outline: 2px solid v.$accented-border-focus;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &--variant {
     &-primary {
-      border: 2px solid yellow;
+      border: 2px solid v.$accented-bg-default;
     }
 
     &-secondary {
-      border: 2px solid green;
+      background-color: transparent;
+      color: v.$accented-bg-default;
+      border: 2px solid v.$accented-bg-default;
+
+      &:hover {
+        background-color: v.$accented-bg-default;
+        color: v.$accented-text-default;
+      }
+
+      &:focus-visible {
+        background-color: v.$accented-bg-focus;
+        color: v.$accented-text-focus;
+        border-color: v.$accented-border-focus;
+      }
     }
   }
 }

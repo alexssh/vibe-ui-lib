@@ -8,19 +8,49 @@ import "./Example.scss"
 
 /* --- */
 
+/**
+ * Example component for demonstration purposes.
+ *
+ * @remarks
+ * This is a basic button component that follows the project's design system.
+ *
+ * @example
+ * ```tsx
+ * <Example variant="primary" onClick={() => console.log('clicked')}>
+ *   Click me
+ * </Example>
+ * ```
+ */
 const ExampleComponent = (
-  { variant = "primary", children, ...rest }: ExampleProps,
+  { variant = "primary", children, className, ...rest }: ExampleProps,
   ref: React.Ref<HTMLButtonElement>
 ) => {
-  const className = clsx("vibe-Example", `vibe-Example--variant-${variant}`)
+  const componentClassName = clsx(
+    "vibe-Example",
+    `vibe-Example--variant-${variant}`,
+    className
+  )
 
   return (
-    <button className={className} ref={ref} {...rest}>
+    <button
+      className={componentClassName}
+      ref={ref}
+      data-testid="example"
+      {...rest}
+    >
       {children}
     </button>
   )
 }
 
-export const Example = typedForwardRef<ExampleProps, HTMLButtonElement>(
+const Example = typedForwardRef<ExampleProps, HTMLButtonElement>(
   ExampleComponent
 )
+
+;(
+  Example as React.ForwardRefExoticComponent<
+    ExampleProps & React.RefAttributes<HTMLButtonElement>
+  >
+).displayName = "Example"
+
+export { Example }
