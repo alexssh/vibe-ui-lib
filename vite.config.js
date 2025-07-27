@@ -6,7 +6,7 @@ export default defineConfig({
   build: {
     minify: true,
     lib: {
-      entry: "src/index.ts",
+      entry: "src/index.tsx",
       name: "vibe-ui-lib",
       formats: ["es"],
       fileName: (format) => `index.${format}.js`,
