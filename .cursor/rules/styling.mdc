@@ -4,26 +4,16 @@ alwaysApply: true
 
 # Styling convention
 
-- Use **SCSS** (syntax = scss).
-- Each component gets one stylesheet: `{ComponentName}.scss`.
-- The root class of every component must be `vibe-{ComponentName}`.
-
-- At the top, import design tokens:
-
-  ```scss
-  @use "../../variables" as v;
-  ```
-
-- Follow **BEM**: `block__element--modifier`.
-- Boolean modifier → no value (`button--disabled`).
-- Key‑value modifier → hyphen‑separated (`button--size-sm`).
-- Build `className` strings with `clsx()` so BEM classes and prop‑driven classes can be combined cleanly.
+- **Tailwind first**. Compose all styles with Tailwind utility classes, including states & behaviour.
+- **Never** fall back to SCSS or inline styles for static design tokens.
+- Define variant logic with **`cva()`** from _class‑variance‑authority_.
+- Custom CSS is allowed **only** in `src/styles.css` (e.g. keyframes, CSS variables).
 
 # Styling guideline
 
-- Implement `:hover`, `:focus-visible`, `:active`, `:disabled` and similar states via CSS pseudo‑classes. Introduce prop‑based modifiers only for states that cannot be expressed with pseudo‑classes (e.g. selected, open).
-- Default to `width: 100%` and `max-width: 100%`, unless the design specifies fixed dimensions.
-- If the design specifies text trimming (e.g. ellipsis), implement that behaviour using SCSS.
+- Implement hover, focus, active, disabled and similar states use pseudo‑class modifiers (`hover:`, `focus-visible:`, `active:`, `disabled:`). Introduce prop‑based modifiers only for states that cannot be expressed with pseudo‑classes (e.g. selected, open), add an optional prop, and pass it to cva() as a variant.
+- Default `w-full max-w-full;` override only if the design specifies fixed width.
+- Text truncation `truncate` or `line-clamp‑{n}` utilities.
 
 - **Never** add states that are not present in the design.
-- **Never** add any animations.
+- **Never** add any animations unless explicitly required by design.

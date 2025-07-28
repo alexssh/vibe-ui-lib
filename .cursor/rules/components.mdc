@@ -7,7 +7,7 @@ alwaysApply: true
 - Build every component on top of a Radix primitive (`@radix-ui/react-*`).
 - Always choose the Radix primitive whose name is the nearest semantic match to the Figma component’s data‑name.
 - When you need to render a custom DOM element, pass **`asChild`** so Radix props/refs still reach it.
-- Merge classes with `clsx('vibe-{ComponentName}', props.className)`; **never** overwrite the classes Radix injects.
+- **Never** overwrite the classes Radix injects.
 - Keep Radix state props (`open`, `checked`, etc.) **controlled** unless the spec calls for uncontrolled behaviour.
 
 # Component detection & reuse guidelines
@@ -25,7 +25,7 @@ alwaysApply: true
 
 - Generate a folder that follows the **Architecture conventions** and **Architecture guideline**.
 - **Never** use class components.
-- **Never** use inline styles (except dynamic CSS variables); static styling lives in SCSS.
+- **Never** use inline styles (except dynamic CSS variables).
 - **Never** add extra states or animations beyond what the design specifies.
 
 # Component properties guidelines
@@ -49,5 +49,5 @@ alwaysApply: true
 
 # Testing hooks
 
-- Expose a stable data-testid equal to the component name in kebab case (e.g., `data-testid="tooltip"`).
+- Expose a stable data-testid equal to the component name in kebab case (e.g., `data-testid="Tooltip"`).
 - Storybook auto‑generates snapshots; do not commit manual snapshots.

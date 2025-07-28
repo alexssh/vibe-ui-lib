@@ -6,7 +6,7 @@ alwaysApply: true
 
 - **PascalCase** for every new component and subcomponent.
 - Subcomponents follow the **same structure** inside the parent folder.
-- Export the component from `index.ts` **exactly** as:
+- Export the component from `src/index.ts` **exactly** as:
   ```ts
   export { {ComponentName} } from './{ComponentName}';
   export type { {ComponentName}Props } from './{ComponentName}.types';
