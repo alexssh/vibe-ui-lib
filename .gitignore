@@ -1,0 +1,12 @@
+# Builds
+dist
+
+# Node
+*.log
+*.log.*
+node_modules
+
+# System
+.DS_store
+*storybook.log
+storybook-static
