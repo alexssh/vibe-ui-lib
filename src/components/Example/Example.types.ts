@@ -1,6 +1,10 @@
 import type * as React from "react"
+import { type VariantProps } from "class-variance-authority"
+import { exampleVariants } from "./Example"
 
-export interface ExampleProps {
+export interface ExampleProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof exampleVariants> {
   /**
    * The visual variant of the button.
    *
@@ -9,29 +13,16 @@ export interface ExampleProps {
   variant?: "primary" | "secondary"
 
   /**
+   * The size of the button.
+   *
+   * @defaultValue "default"
+   */
+  size?: "default" | "sm" | "lg"
+
+  /**
    * The content to display inside the button.
    */
   children?: React.ReactNode
-
-  /**
-   * Callback function called when the button is clicked.
-   */
-  onClick?: () => void
-
-  /**
-   * Additional CSS class names to apply to the button.
-   */
-  className?: string
-
-  /**
-   * Additional inline styles to apply to the button.
-   */
-  style?: React.CSSProperties
-
-  /**
-   * Whether the button is disabled.
-   */
-  disabled?: boolean
 
   /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
