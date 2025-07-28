@@ -7,5 +7,5 @@ export default {
     format: "es",
   },
   plugins: [dts()],
-  external: [/\.scss$/],
+  external: [/\.css$/],
 }

@@ -23,5 +23,5 @@
     "outDir": "dist/tmp-types"
   },
   "include": ["./src/**/*.ts", "./src/**/*.d.ts", "./src/**/*.tsx"],
-  "exclude": ["**/*.stories.ts", "**/*.stories.tsx", "**/*.scss", "**/*.css"]
+  "exclude": ["**/*.stories.ts", "**/*.stories.tsx"]
 }
