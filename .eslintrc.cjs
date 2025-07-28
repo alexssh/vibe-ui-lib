@@ -17,6 +17,7 @@ module.exports = {
     "vite.config.js",
     "**/*.stories.ts",
     "**/*.stories.tsx",
+    "storybook-static",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
