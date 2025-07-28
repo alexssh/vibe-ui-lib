@@ -9,7 +9,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "baseUrl": "./src",
-    "removeComments": true,
+    "removeComments": false,
     "noImplicitAny": false,
     "allowJs": false,
     "esModuleInterop": true,

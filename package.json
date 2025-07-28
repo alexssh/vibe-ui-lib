@@ -7,9 +7,14 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "peerDependencies": {
-    "radix-ui": "^1.4.2",
     "clsx": "^2.1.1",
-    "react": "^19.0.0"
+    "react": "^19.0.0",
+    "radix-ui": "^1.4.2",
+    "@radix-ui/react-accessible-icon": "^1.1.7",
+    "@radix-ui/react-direction": "^1.1.1",
+    "@radix-ui/react-portal": "^1.1.9",
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-visually-hidden": "^1.2.3"
   },
   "devDependencies": {
     "@storybook/react-vite": "^9.0.18",
@@ -41,6 +46,5 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "deploy-storybook": "gh-pages -d storybook-static"
-  },
-  "dependencies": {}
+  }
 }
