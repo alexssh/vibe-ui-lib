@@ -2,9 +2,7 @@
 
 This repository represents a proof-of-concept for importing Figma components into a React library using MCP (Model Context Protocol) with Cursor (+ gemini-2.5-pro).
 
-The goal is to obtain components that are as close as possible to production-ready, with well-documented and structured code that is easy to maintain and modify, primarily manually.
-
-The examples in the demo Storybook are displayed as-is, without manual changes after being imported from Figma.
+The goal is to obtain components that are as close as possible to production-ready, with well-documented and structured code that is easy to maintain and modify.
 
 - [Demo](https://alexssh.github.io/vibe-ui-lib/)
 - [Figma library file (source)](https://www.figma.com/design/QbK6Oyz6JR1lKLZNqPvzr8/Vibe-UI-Lib?node-id=0-1&t=3Y07vxxsmtbpHwAM-1)
@@ -13,14 +11,14 @@ The examples in the demo Storybook are displayed as-is, without manual changes a
 
 - **Figma Integration**: Rules for importing/updating Figma components into code via MCP
 - **Radix UI Foundation**: Component implementations using Radix UI primitives for accessibility and flexibility
-- **SCSS + BEM Styling**: Clean, maintainable styling with BEM class naming conventions
-- **Storybook Documentation**: Interactive component documentation and testing
+- **Tailwind Styling**: Clean, maintainable utility styling
+- **Storybook Documentation**: Interactive component documentation
 - **TypeScript Support**: Full type safety with proper IntelliSense
 - **Production Ready**: Optimized builds for npm package distribution
 
 ## Getting started
 
-### Setting up
+### Env
 
 1. Clone the repository and open in Cursor
 2. Install dependencies: `npm i`
@@ -32,15 +30,7 @@ The examples in the demo Storybook are displayed as-is, without manual changes a
 2. Use one of the prompts below within Cursor (use agent mode)
 3. Code components will be automatically generated following the established patterns
 
-## Figma file organization
-
-- Use **PascalCase** for component names
-- Use **camelCase** for everything else (properties, layers, etc.)
-- Name the layers according to the variables associated with them.
-- Try to use terms in properties that are as close as possible to those used on the technical side (states, hover, disabled, etc).
-- Components named like `Component/Subcomponent/Subcomponent` will be organized accordingly in the code.
-
-## Commands
+### Useful commands
 
 ```bash
 # Development
@@ -83,7 +73,7 @@ Add types to your `tsconfig.json` for better development experience:
 import 'vibe-ui-lib/dist/style.css';
 
 // Import components
-import { Example, Icon } from 'vibe-ui-lib';
+import { Example } from 'vibe-ui-lib';
 
 // Basic usage
 <Example variant="primary" onClick={() => console.log('clicked')}>
@@ -96,6 +86,14 @@ import { Example, Icon } from 'vibe-ui-lib';
 </Example>
 ```
 
+## Figma file organization
+
+- Use **PascalCase** for component names
+- Use **camelCase** for everything else (properties, layers, etc.)
+- Name the layers according to the variables associated with them.
+- Try to use terms in properties that are as close as possible to those used on the technical side (states, hover, disabled, etc).
+- Components named like `Component/Subcomponent/Subcomponent` will be organized accordingly in the code.
+
 ## Prompts
 
 For importing components (all other guidelines will be applied automatically from `.cursor/rules`):
@@ -106,3 +104,16 @@ The components will be shipped inside an npm package as a component library and 
 Import Figma variables (design tokens) into ./src/variables.scss.
 Follow rules and guidelines provided.
 ```
+
+You can try extending it with additional instructions that override the guidelines. Useful for handling certain exceptions.
+
+```
+...
+Follow rules and guidelines provided.
+
+Ignore the guideline about not adding animations. This spinner component should rotate 360 degrees over the course of one second, with the animation set to loop continuously.
+```
+
+## Components list
+
+Below is a list of components that were imported from Figma as-is, as well as those that were manually tweaked or vibe-coded.
