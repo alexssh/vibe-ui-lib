@@ -1,18 +1,5 @@
 import type * as React from "react"
 
-/**
- * Props for the Example component.
- *
- * @remarks
- * The component renders a button element with customizable styling variants.
- *
- * @example
- * ```tsx
- * <Example variant="primary" onClick={() => console.log('clicked')}>
- *   Click me
- * </Example>
- * ```
- */
 export interface ExampleProps {
   /**
    * The visual variant of the button.
@@ -45,4 +32,11 @@ export interface ExampleProps {
    * Whether the button is disabled.
    */
   disabled?: boolean
+
+  /**
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   *
+   * @defaultValue false
+   */
+  asChild?: boolean
 }

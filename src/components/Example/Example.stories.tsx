@@ -42,6 +42,11 @@ const meta: Meta<ExampleProps> = {
       control: { type: "text" },
       description: "Additional CSS class names to apply to the button",
     },
+    asChild: {
+      control: { type: "boolean" },
+      description:
+        "Change the default rendered element for the one passed as a child",
+    },
   },
 }
 
@@ -95,5 +100,29 @@ export const Disabled: Story = {
     variant: "primary",
     children: "Disabled Button",
     disabled: true,
+  },
+}
+
+/**
+ * Example using asChild prop to render as a link.
+ */
+export const AsLink: Story = {
+  ...Template,
+  args: {
+    variant: "primary",
+    asChild: true,
+    children: <a href="https://example.com">Link Button</a>,
+  },
+}
+
+/**
+ * Example using asChild prop to render as a div.
+ */
+export const AsDiv: Story = {
+  ...Template,
+  args: {
+    variant: "secondary",
+    asChild: true,
+    children: <div>Div Button</div>,
   },
 }
