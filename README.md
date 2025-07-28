@@ -1,9 +1,13 @@
 # Vibe UI Library
 
-This repository represents a proof-of-concept for importing Figma components into a React library using MCP (Model Context Protocol) with Cursor (+ auto model). The goal is to obtain components that are as close as possible to production-ready, with well-documented and structured code that is easy to maintain and modify, primarily manually.
+This repository represents a proof-of-concept for importing Figma components into a React library using MCP (Model Context Protocol) with Cursor (+ gemini-2.5-pro).
 
-- [Figma library file](https://www.figma.com/design/QbK6Oyz6JR1lKLZNqPvzr8/Vibe-UI-Lib?node-id=0-1&t=3Y07vxxsmtbpHwAM-1).
-- [Storybook](https://alexssh.github.io/vibe-ui-lib/)
+The goal is to obtain components that are as close as possible to production-ready, with well-documented and structured code that is easy to maintain and modify, primarily manually.
+
+The examples in the demo Storybook are displayed as-is, without manual changes after being imported from Figma.
+
+- [Demo](https://alexssh.github.io/vibe-ui-lib/)
+- [Figma library file (source)](https://www.figma.com/design/QbK6Oyz6JR1lKLZNqPvzr8/Vibe-UI-Lib?node-id=0-1&t=3Y07vxxsmtbpHwAM-1)
 
 ## Features
 
@@ -16,7 +20,7 @@ This repository represents a proof-of-concept for importing Figma components int
 
 ## Getting started
 
-### Prerequisites
+### Setting up
 
 1. Clone the repository and open in Cursor
 2. Install dependencies: `npm i`
@@ -25,10 +29,10 @@ This repository represents a proof-of-concept for importing Figma components int
 ### Usage
 
 1. Select a component in Figma
-2. Use one of the prompts below within Cursor (use agent mode + auto model selection)
-3. Components will be automatically generated following the established patterns
+2. Use one of the prompts below within Cursor (use agent mode)
+3. Code components will be automatically generated following the established patterns
 
-### Figma file organization
+## Figma file organization
 
 - Use **PascalCase** for component names
 - Use **camelCase** for everything else (properties, layers, etc.)
@@ -45,29 +49,6 @@ npm run storybook    # Start Storybook dev server (for local preview)
 # Production
 npm run prod         # Build library for consumer projects
 ```
-
-## Architecture
-
-### Component Structure
-
-Each component follows this structure:
-
-```
-ComponentName/
-├─ ComponentName.tsx      # React logic with Radix UI primitives
-├─ ComponentName.scss     # SCSS styles with BEM naming
-├─ ComponentName.types.ts # TypeScript types/interfaces
-├─ ComponentName.stories.tsx # Storybook documentation
-└─ index.ts              # Barrel export
-```
-
-### Key Features
-
-- **Radix UI Integration**: All components built on Radix UI primitives
-- **ForwardRef Support**: Proper ref forwarding for all interactive components
-- **asChild Prop**: Flexible rendering with `asChild` prop for maximum customization
-- **Design Tokens**: SCSS variables imported from Figma for consistent theming
-- **Accessibility**: Built-in accessibility features from Radix UI
 
 ## Using the library
 
@@ -125,7 +106,3 @@ The components will be shipped inside an npm package as a component library and 
 Import Figma variables (design tokens) into ./src/variables.scss.
 Follow rules and guidelines provided.
 ```
-
-## License
-
-This project is licensed under the MIT License.
