@@ -26,3 +26,5 @@ alwaysApply: true
 ├─ {ComponentName}.stories.tsx # Storybook story with controls
 └─ index.ts # barrel export
 ```
+
+- Check `src/components/Example` for reference and code style.

@@ -5,6 +5,7 @@ alwaysApply: true
 # Radix‑UI integration guidelines
 
 - Build every component on top of a Radix primitive (`@radix-ui/react-*`).
+- Always choose the Radix primitive whose name is the nearest semantic match to the Figma component’s data‑name.
 - When you need to render a custom DOM element, pass **`asChild`** so Radix props/refs still reach it.
 - Merge classes with `clsx('vibe-{ComponentName}', props.className)`; **never** overwrite the classes Radix injects.
 - Keep Radix state props (`open`, `checked`, etc.) **controlled** unless the spec calls for uncontrolled behaviour.
@@ -35,42 +36,10 @@ alwaysApply: true
 
 # Code style
 
-- Use `forwardRef<HTMLElement, {ComponentName}Props>` with a named arrow function.
 - Set `displayName = '{ComponentName}'` for React DevTools.
 - Apply default values via ES2015 parameter defaults, not defaultProps.
 - Avoid `any;` prefer `unknown` plus type narrowing.
-- Always wrap ref‑forwarding components with the project helper typedForwardRef located at `src/utils/typedForwardRef.ts`. This preserves full prop‑intelligence in VS Code and avoids the common “ref is missing in props validation” pitfall.
-- Document every exported type, interface, enum and public prop with JSDoc so VS Code shows rich IntelliSense, for instance:
-
-  ````ts
-  /**
-   * Props for the Tooltip component.
-   *
-   * @remarks
-   * The component wraps Radix `Tooltip.Root`.
-   *
-   * @example
-   * ```tsx
-   * <Tooltip content="Copy">
-   *   <IconCopy />
-   * </Tooltip>
-   * ```
-   */
-  export interface TooltipProps {
-    /** Text or React node displayed inside the bubble. */
-    content: React.ReactNode
-
-    /**
-     * Delay in milliseconds before the tooltip appears.
-     *
-     * @defaultValue 0
-     */
-    delay?: number
-
-    /** Disables the tooltip entirely. */
-    disabled?: boolean
-  }
-  ````
+- Document every exported component, type, interface, enum and public prop with JSDoc so VS Code shows rich IntelliSense.
 
 # Accessibility guidelines
 
