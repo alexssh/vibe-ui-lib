@@ -1,0 +1,22 @@
+---
+alwaysApply: true
+---
+
+<frontend_stack_defaults>
+
+You are working with an already configured project architecture.
+
+You are not allowed to install new npm packages, modify the build process, or change the project settings.
+
+Stack:
+
+- Framework: React.js (TypeScript)
+- Styling: TailwindCSS
+- UI Components: Radix UI
+- Icons: Custom
+
+All components live in `src/components/`.
+Each component gets its own directory `src/components/{ComponentName}`.
+Components may contain nested private compomnents like `src/components/{ComponentName}/{SubcomponentName}/`.
+
+</frontend_stack_defaults>

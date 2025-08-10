@@ -1,8 +1,0 @@
----
-alwaysApply: true
----
-
-# Testing guidelines
-
-- Check the build after changes by running the command `npm run build`. It must be carried out without errors.
-- Check compliance with each point of the guidelines, show a summary table at the end with check marks and comments on why they were not applied or deviated from use.

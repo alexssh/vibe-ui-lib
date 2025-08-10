@@ -1,0 +1,105 @@
+---
+alwaysApply: false
+---
+
+<context_understanding>
+
+Your task is to add a new component to the project so that it can be reused in other projects for building interfaces.
+
+The source design comes from Figma, delivered via MCP as an HTML structure using TailwindCSS. Your job is to transform this design into a code implementation that meets our component library standards.
+
+</context_understanding>
+
+<code_editing_rules>
+
+<file_structure>
+
+Each component typically contains:
+
+- {ComponentName}.stories.tsx — Storybook documentation.
+- {ComponentName}.tsx — Main component file with logic and render.
+- {ComponentName}.types.ts — Variants, class descriptions, and type definitions.
+
+</file_structure>
+
+<naming_and_structure>
+
+Use PascalCase for every new component and subcomponent.
+
+The HTML structure from Figma’s MCP output reflects how the designer structures components:
+
+- If `data-name` starts with a capital letter → it is a separate component.
+- If data-name contains slashes (e.g. `Input/ButtonClear`):
+  - The first segment equals the parent component’s name.
+  - Any further segments represent private subcomponents.
+
+</naming_and_structure>
+
+<exports>
+
+Export the component from `src/index.ts` exactly as follows:
+
+```ts
+  export { {ComponentName} } from './{ComponentName}';
+  export type { {ComponentName}Props } from './{ComponentName}.types';
+```
+
+</exports>
+
+<implementation>
+
+Set `displayName = '{ComponentName}'` for React DevTools.
+
+Build each component on top of a Radix UI primitive that most closely matches the semantic meaning of the Figma component’s name.
+
+Never overwrite classes injected by Radix.
+
+Compose all styles with TailwindCSS utility classes, including states & behaviour.
+
+Use `class-variance-authority` to manage variants and styles.
+
+Use variables from the theme. Add new variables to the theme if needed.
+
+Expose a stable data-testid equal to the component name in PascalCase (e.g., `data-testid="Tooltip"`).
+
+Do not add props or states that are absent from the design, except:
+
+- Required technical or Radix UI props (className, style, data-testid, asChild, etc.).
+- Radix state props (open, checked, etc.) needed for controlled behaviour, unless the spec explicitly calls for uncontrolled behaviour.
+
+Add any animations unless explicitly requested.
+
+Never redraw or hand‑convert SVGs.
+
+Read the raw `<svg>` markup from its source URL (often `http://localhost:*/…/*.svg`). Paste that markup directly into the component’s JSX; do not ship an external `<img>` tag or a runtime fetch.
+
+Remove hard‑coded fill colours so the SVG can inherit from a component property.
+
+For decorative icons, set `aria-hidden="true"` and `focusable="false"`.
+
+If a component exposes the `content` or `slot` prop, treat its value as ReactNode children.
+
+If the prop’s name is `slot`:
+
+- Ignore placeholder graphics from Figma (e.g., `Placeholder` frame).
+- Render the literal string "Placeholder" instead.
+
+Alwats provide JSDoc documentation for components.
+
+</implementation>
+
+<testing>
+
+Check the build after changes by running the command `npm run build`. It must be carried out without errors.
+
+Check compliance with each point of the guidelines, show a summary table at the end with check marks or reasoning and/or comments on why they were not applied or deviated from use.
+
+</testing>
+
+<reference>
+
+Refer to `src/components/Example` for the standard implementation pattern.
+
+</reference>
+
+</code_editing_rules>
