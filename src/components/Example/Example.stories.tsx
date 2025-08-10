@@ -21,36 +21,37 @@ const meta: Meta<ExampleProps> = {
     },
   },
   argTypes: {
+    asChild: {
+      control: { type: "boolean" },
+      description:
+        "Change the default rendered element for the one passed as a child",
+    },
     className: {
       control: { type: "text" },
       description: "Additional CSS class names to apply to the button",
     },
-    variant: {
-      control: { type: "radio" },
-      options: ["primary", "secondary"],
-      description: "The visual variant of the button",
+    children: {
+      control: { type: "text" },
+      description: "The content to display inside the button",
+    },
+
+    disabled: {
+      control: { type: "boolean" },
+      description: "Whether the button is disabled",
+    },
+    onClick: {
+      action: "clicked",
+      description: "Callback function called when the button is clicked",
     },
     size: {
       control: { type: "radio" },
       options: ["default", "small"],
       description: "The size of the button",
     },
-    disabled: {
-      control: { type: "boolean" },
-      description: "Whether the button is disabled",
-    },
-    children: {
-      control: { type: "text" },
-      description: "The content to display inside the button",
-    },
-    onClick: {
-      action: "clicked",
-      description: "Callback function called when the button is clicked",
-    },
-    asChild: {
-      control: { type: "boolean" },
-      description:
-        "Change the default rendered element for the one passed as a child",
+    variant: {
+      control: { type: "radio" },
+      options: ["primary", "secondary"],
+      description: "The visual variant of the button",
     },
   },
 }
@@ -63,8 +64,8 @@ type Story = StoryObj<typeof meta>
  */
 export const Primary: Story = {
   args: {
-    variant: "primary",
     children: "Primary Button",
+    variant: "primary",
   },
 }
 
@@ -73,8 +74,8 @@ export const Primary: Story = {
  */
 export const Secondary: Story = {
   args: {
-    variant: "secondary",
     children: "Secondary Button",
+    variant: "secondary",
   },
 }
 
@@ -83,9 +84,9 @@ export const Secondary: Story = {
  */
 export const Disabled: Story = {
   args: {
-    variant: "primary",
     children: "Disabled Button",
     disabled: true,
+    variant: "primary",
   },
 }
 
@@ -94,9 +95,9 @@ export const Disabled: Story = {
  */
 export const AsLink: Story = {
   args: {
-    variant: "primary",
     asChild: true,
     children: <a href="https://example.com">Link Button</a>,
+    variant: "primary",
   },
 }
 
@@ -105,8 +106,8 @@ export const AsLink: Story = {
  */
 export const AsDiv: Story = {
   args: {
-    variant: "secondary",
     asChild: true,
     children: <div>Div Button</div>,
+    variant: "secondary",
   },
 }

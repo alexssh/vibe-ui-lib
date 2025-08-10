@@ -3,22 +3,22 @@ import { type VariantProps } from "class-variance-authority"
 import { cva } from "class-variance-authority"
 
 export const exampleVariants = cva(
-  "inline-flex items-center justify-center rounded-sm text-[15px] font-semibold cursor-pointer focus-visible:outline-none disabled:pointer-events-none",
+  "inline-flex items-center justify-center rounded-sm truncate text-[15px] font-semibold cursor-pointer focus-visible:outline-none disabled:pointer-events-none",
   {
     variants: {
-      variant: {
-        primary:
-          "bg-accented-bg-interactive text-accented-text-interactive hover:bg-accented-bg-interactive-hover hover:text-accented-text-interactive-hover focus-visible:bg-accented-bg-interactive-focus focus-visible:text-accented-text-interactive-focus focus-visible:border-2 focus-visible:border-accented-border-interactive-focus",
-        secondary:
-          "bg-neutral-bg-interactive text-neutral-text-interactive border border-neutral-border-interactive hover:bg-neutral-bg-interactive-hover hover:text-neutral-text-interactive-hover hover:border-neutral-border-interactive-hover focus-visible:bg-neutral-bg-interactive-focus focus-visible:text-neutral-text-interactive-focus focus-visible:border-2 focus-visible:border-neutral-border-interactive-focus",
+      disabled: {
+        true: "",
+        false: "",
       },
       size: {
         default: "h-12 px-6",
         small: "h-8 px-4",
       },
-      disabled: {
-        true: "",
-        false: "",
+      variant: {
+        primary:
+          "bg-accented-bg-interactive text-accented-text-interactive hover:bg-accented-bg-interactive-hover hover:text-accented-text-interactive-hover focus-visible:bg-accented-bg-interactive-focus focus-visible:text-accented-text-interactive-focus focus-visible:border-2 focus-visible:border-accented-border-interactive-focus",
+        secondary:
+          "bg-neutral-bg-interactive text-neutral-text-interactive border border-neutral-border-interactive hover:bg-neutral-bg-interactive-hover hover:text-neutral-text-interactive-hover hover:border-neutral-border-interactive-hover focus-visible:bg-neutral-bg-interactive-focus focus-visible:text-neutral-text-interactive-focus focus-visible:border-2 focus-visible:border-neutral-border-interactive-focus",
       },
     },
     compoundVariants: [
@@ -36,9 +36,10 @@ export const exampleVariants = cva(
       },
     ],
     defaultVariants: {
-      variant: "primary",
-      size: "default",
       disabled: false,
+
+      size: "default",
+      variant: "primary",
     },
   }
 )
@@ -47,18 +48,16 @@ export interface ExampleProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof exampleVariants> {
   /**
-   * The visual variant of the button.
+   * Change the default rendered element for the one passed as a child, merging their props and behavior.
    *
-   * @defaultValue "primary"
+   * @defaultValue false
    */
-  variant?: "primary" | "secondary"
+  asChild?: boolean
 
   /**
-   * The size of the button.
-   *
-   * @defaultValue "default"
+   * The content to display inside the button.
    */
-  size?: "default" | "small"
+  children?: React.ReactNode
 
   /**
    * Whether the button is disabled.
@@ -68,13 +67,16 @@ export interface ExampleProps
   disabled?: boolean
 
   /**
-   * The content to display inside the button.
-   */
-  children?: React.ReactNode
-  /**
-   * Change the default rendered element for the one passed as a child, merging their props and behavior.
+   * The size of the button.
    *
-   * @defaultValue false
+   * @defaultValue "default"
    */
-  asChild?: boolean
+  size?: "default" | "small"
+
+  /**
+   * The visual variant of the button.
+   *
+   * @defaultValue "primary"
+   */
+  variant?: "primary" | "secondary"
 }

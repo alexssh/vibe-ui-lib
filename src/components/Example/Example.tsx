@@ -22,12 +22,12 @@ import { exampleVariants } from "./Example.types"
 const Example = React.forwardRef<HTMLButtonElement, ExampleProps>(
   (
     {
-      className,
       asChild = false,
-      variant,
-      size,
-      disabled = false,
       children,
+      className,
+      disabled = false,
+      size,
+      variant,
       ...rest
     },
     ref
@@ -36,7 +36,7 @@ const Example = React.forwardRef<HTMLButtonElement, ExampleProps>(
 
     return (
       <Component
-        className={exampleVariants({ className, variant, size, disabled })}
+        className={exampleVariants({ className, disabled, size, variant })}
         disabled={disabled}
         ref={ref}
         data-testid="example"
