@@ -16,15 +16,28 @@ const meta: Meta<ExampleProps> = {
     docs: {
       description: {
         component:
-          "A basic button component with customizable variants and styling.",
+          "An example of abasic button component with customizable variants and styling.",
       },
     },
   },
   argTypes: {
+    className: {
+      control: { type: "text" },
+      description: "Additional CSS class names to apply to the button",
+    },
     variant: {
       control: { type: "radio" },
       options: ["primary", "secondary"],
       description: "The visual variant of the button",
+    },
+    size: {
+      control: { type: "radio" },
+      options: ["default", "small"],
+      description: "The size of the button",
+    },
+    disabled: {
+      control: { type: "boolean" },
+      description: "Whether the button is disabled",
     },
     children: {
       control: { type: "text" },
@@ -33,14 +46,6 @@ const meta: Meta<ExampleProps> = {
     onClick: {
       action: "clicked",
       description: "Callback function called when the button is clicked",
-    },
-    disabled: {
-      control: { type: "boolean" },
-      description: "Whether the button is disabled",
-    },
-    className: {
-      control: { type: "text" },
-      description: "Additional CSS class names to apply to the button",
     },
     asChild: {
       control: { type: "boolean" },
@@ -53,27 +58,10 @@ const meta: Meta<ExampleProps> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-const Template: StoryObj<ExampleProps> = {
-  render: (args) => <Example {...args} />,
-}
-
-/**
- * Playground story with all controls available.
- */
-export const Playground: Story = {
-  ...Template,
-  args: {
-    variant: "primary",
-    children: "Click me",
-    disabled: false,
-  },
-}
-
 /**
  * Primary variant - the default look of the component.
  */
 export const Primary: Story = {
-  ...Template,
   args: {
     variant: "primary",
     children: "Primary Button",
@@ -84,7 +72,6 @@ export const Primary: Story = {
  * Secondary variant example.
  */
 export const Secondary: Story = {
-  ...Template,
   args: {
     variant: "secondary",
     children: "Secondary Button",
@@ -95,7 +82,6 @@ export const Secondary: Story = {
  * Disabled state example.
  */
 export const Disabled: Story = {
-  ...Template,
   args: {
     variant: "primary",
     children: "Disabled Button",
@@ -107,7 +93,6 @@ export const Disabled: Story = {
  * Example using asChild prop to render as a link.
  */
 export const AsLink: Story = {
-  ...Template,
   args: {
     variant: "primary",
     asChild: true,
@@ -119,7 +104,6 @@ export const AsLink: Story = {
  * Example using asChild prop to render as a div.
  */
 export const AsDiv: Story = {
-  ...Template,
   args: {
     variant: "secondary",
     asChild: true,
