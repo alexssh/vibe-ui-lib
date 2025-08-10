@@ -1,1 +1,49 @@
 @import "tailwindcss";
+
+@theme {
+  /* Neutral */
+
+  --color-neutral-text-default: #000000;
+  --color-neutral-text-secondary: #4c4c4c;
+  --color-neutral-text-error: #db0000;
+  --color-neutral-text-interactive: #000000;
+  --color-neutral-text-interactive-hover: #00549e;
+  --color-neutral-text-interactive-focus: #000000;
+  --color-neutral-text-interactive-disabled: #858585;
+
+  --color-neutral-icon-default: #000000a3;
+  --color-neutral-icon-interactive: #000000;
+  --color-neutral-icon-interactive-hover: #00549e;
+  --color-neutral-icon-interactive-focus: #000000;
+  --color-neutral-icon-interactive-disabled: #858585;
+
+  --color-neutral-bg-default: #ffffff;
+  --color-neutral-bg-interactive: #ffffff;
+  --color-neutral-bg-interactive-hover: #ddefff;
+  --color-neutral-bg-interactive-focus: #ffea00;
+  --color-neutral-bg-interactive-disabled: #d6d6d6;
+
+  --color-neutral-border-divider: #0000001f;
+  --color-neutral-border-interactive: #00000052;
+  --color-neutral-border-interactive-hover: #00549e7a;
+  --color-neutral-border-interactive-focus: #000000;
+
+  /* Accented */
+
+  --color-accented-text-interactive: #ffffff;
+  --color-accented-text-interactive-hover: #ffffffcc;
+  --color-accented-text-interactive-focus: #000000;
+  --color-accented-text-interactive-disabled: #858585;
+
+  --color-accented-icon-interactive: #ffffff;
+  --color-accented-icon-interactive-hover: #ffffffcc;
+  --color-accented-icon-interactive-focus: #000000;
+  --color-accented-icon-interactive-disabled: #858585;
+
+  --color-accented-bg-interactive: #0088ff;
+  --color-accented-bg-interactive-hover: #0061b6;
+  --color-accented-bg-interactive-focus: #ffea00;
+  --color-accented-bg-interactive-disabled: #d6d6d6;
+
+  --color-accented-border-interactive-focus: #000000;
+}
