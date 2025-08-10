@@ -6,7 +6,9 @@ alwaysApply: false
 
 Your task is to add a new component to the project so that it can be reused in other projects for building interfaces.
 
-The source design comes from Figma, delivered via MCP as an HTML structure using TailwindCSS. Your job is to transform this design into a code implementation that meets our component library standards.
+The source design comes from Figma, delivered via MCP as an HTML structure using TailwindCSS. You must get design from Figma MCP.
+
+Your job is to transform this design into a code implementation that meets our component library standards.
 
 </context_understanding>
 
@@ -85,6 +87,22 @@ If the prop’s name is `slot`:
 Alwats provide JSDoc documentation for components.
 
 </implementation>
+
+<storybook_convention>
+
+Every component must be represented in Storybook. Use autodocs.
+
+If additional usage notes are required, include a short MDX description at the top:
+
+Expose every public prop (except `style` and `data-*`) via Storybook Controls.
+
+For enum-like props, provide a union type and set the control to radio or select.
+
+Organise controls alphabetically.
+
+Supply at least one story (e.g., `Default`) or multiple ones based on variants.
+
+</storybook_convention>
 
 <testing>
 
