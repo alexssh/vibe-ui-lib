@@ -11,7 +11,6 @@ module.exports = {
   ignorePatterns: [
     "dist",
     "node_modules",
-    "scripts",
     ".eslintrc.cjs",
     "rollup.config.dts.js",
     "vite.config.js",
