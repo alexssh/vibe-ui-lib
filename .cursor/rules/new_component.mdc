@@ -73,8 +73,6 @@ Never redraw or hand‑convert SVGs.
 
 Read the raw `<svg>` markup from its source URL (often `http://localhost:*/…/*.svg`). Paste that markup directly into the component’s JSX; do not ship an external `<img>` tag or a runtime fetch.
 
-Remove hard‑coded fill colours so the SVG can inherit from a component property.
-
 For decorative icons, set `aria-hidden="true"` and `focusable="false"`.
 
 If a component exposes the `content` or `slot` prop, treat its value as ReactNode children.
