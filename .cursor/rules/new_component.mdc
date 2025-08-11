@@ -71,9 +71,7 @@ Do not add props or states that are absent from the design, except:
 
 Add any animations unless explicitly requested.
 
-Never redraw or hand‑convert SVGs.
-
-Read the raw `<svg>` markup from its source URL (often `http://localhost:*/…/*.svg`). Paste that markup directly into the component’s JSX; do not ship an external `<img>` tag or a runtime fetch.
+Never redraw SVGs manually. Read the SVG files using URLs provided Figma MCP (often `http://localhost:*/…/*.svg`) and paste their markup directly into the component’s JSX; do not ship an external `<img>` tag or a runtime fetch.
 
 For decorative icons, set `aria-hidden="true"` and `focusable="false"`.
 
