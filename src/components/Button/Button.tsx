@@ -1,11 +1,11 @@
 import * as React from "react"
 import * as Slot from "@radix-ui/react-slot"
 
-import type { ExampleProps } from "./Example.types"
-import { exampleVariants } from "./Example.types"
+import type { ButtonProps } from "./Button.types"
+import { buttonVariants } from "./Button.types"
 
 /**
- * Example component for demonstration purposes.
+ * Button component.
  *
  * @remarks
  * This is a basic button component that follows the project's design system.
@@ -13,13 +13,13 @@ import { exampleVariants } from "./Example.types"
  *
  * @example
  * ```tsx
- * <Example variant="primary" size="small" disabled={false} onClick={() => console.log('clicked')}>
+ * <Button variant="primary" size="small" disabled={false} onClick={() => console.log('clicked')}>
  *   Click me
- * </Example>
+ * </Button>
  * ```
  */
 
-const Example = ({
+const Button = ({
   ref,
   asChild = false,
   children,
@@ -28,12 +28,12 @@ const Example = ({
   size,
   variant,
   ...rest
-}: ExampleProps) => {
+}: ButtonProps) => {
   const Component = asChild ? Slot.Root : "button"
 
   return (
     <Component
-      className={exampleVariants({ className, disabled, size, variant })}
+      className={buttonVariants({ className, disabled, size, variant })}
       disabled={disabled}
       ref={ref}
       data-testid="example"
@@ -44,6 +44,6 @@ const Example = ({
   )
 }
 
-Example.displayName = "Example"
+Button.displayName = "Button"
 
-export { Example }
+export { Button }

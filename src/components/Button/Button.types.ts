@@ -2,7 +2,7 @@ import type * as React from "react"
 import { type VariantProps } from "class-variance-authority"
 import { cva } from "class-variance-authority"
 
-export const exampleVariants = cva(
+export const buttonVariants = cva(
   "inline-flex items-center justify-center rounded-sm truncate text-[15px] font-semibold cursor-pointer focus-visible:outline-none disabled:pointer-events-none",
   {
     variants: {
@@ -11,8 +11,8 @@ export const exampleVariants = cva(
         false: "",
       },
       size: {
-        default: "h-12 px-6",
-        small: "h-8 px-4",
+        default: "h-12 px-4 gap-2",
+        small: "h-9 px-3 gap-1",
       },
       variant: {
         primary:
@@ -44,9 +44,9 @@ export const exampleVariants = cva(
   }
 )
 
-export interface ExampleProps
+export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof exampleVariants> {
+    VariantProps<typeof buttonVariants> {
   /**
    * Ref to the underlying DOM element. React 19 allows passing `ref` as a prop without `forwardRef`.
    */

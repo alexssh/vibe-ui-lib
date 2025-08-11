@@ -1,22 +1,22 @@
 import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { Example } from "./Example"
-import type { ExampleProps } from "./Example.types"
+import { Button } from "./Button"
+import type { ButtonProps } from "./Button.types"
 
 /**
  * Example component stories.
  *
  * This component demonstrates a basic button with primary and secondary variants.
  */
-const meta: Meta<ExampleProps> = {
-  title: "Components/Example",
-  component: Example,
+const meta: Meta<ButtonProps> = {
+  title: "Components/Button",
+  component: Button,
   tags: ["autodocs"],
   parameters: {
     docs: {
       description: {
         component:
-          "An example of abasic button component with customizable variants and styling.",
+          "An example of a basic button component with customizable variants and styling.",
       },
     },
   },
