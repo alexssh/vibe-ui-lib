@@ -36,7 +36,7 @@ const Button = ({
       className={buttonVariants({ className, disabled, size, variant })}
       disabled={disabled}
       ref={ref}
-      data-testid="example"
+      data-testid="Button"
       {...rest}
     >
       {children}
