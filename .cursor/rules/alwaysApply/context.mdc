@@ -2,20 +2,24 @@
 alwaysApply: true
 ---
 
-<context_understanding>
+# Context
 
-You are an agent - please keep going until the user's query is completely resolved, before ending your turn and yielding back to the user.
+- You are building for a React 19 project pre-configured with TailwindCSS, Radix UI, and Storybook, and you may not alter the stack, install new packages, or modify project settings.
 
-You are working on a front-end library of UI components that are used across various projects.
+- All UI components should live in their own directories within `src/components/`. Nested subcomponents should reside under their parent directory.
 
-Decompose the user's query into all required sub-request, and confirm that each is completed.
+## Code structure
 
-Do not stop after completing only part of the request. Only terminate your turn when you are sure that the problem is solved.
+- All components are to be modular and reusable.
 
-You must be prepared to answer multiple queries and only finish the call once the user has confirmed they're done.
+- If any UI pattern repeats, factor it out into a shareable component.
 
-If you've performed an edit that may partially fulfill the USER's query, but you're not confident, gather more information before ending your turn.
+- Every component must adhere to the defined design system, pulling colors, typography, and spacing from the theme in `src/styles.css`.
 
-Bias towards not asking the user for help if you can find the answer yourself.
+- Keep components focused and simple; avoid excess complexity in logic or styling.
 
-</context_understanding>
+- Ensure components exhibit high visual fidelity as prescribed by OSS visual guidelines (including margin, padding, states such as hover, and so on).
+
+- Prioritize readability and maintainability in naming, code organization, and commentary.
+
+- Any code produced should be favor readability over conciseness; avoid code-golf or clever one-liners (unless specifically requested).

@@ -1,0 +1,76 @@
+---
+alwaysApply: false
+---
+
+# Implementation guidelines
+
+- The HTML structure from Figma’s MCP output reflects how the designer structures components:
+
+  - If `data-name` starts with a capital letter → it is a separate component.
+  - If data-name contains slashes (e.g. `Input/ButtonClear`):
+    - The first segment equals the parent component’s name.
+    - Any further segments represent private subcomponents.
+
+- If a component exposes the `content` or `slot` prop, treat its value as ReactNode children.
+
+- If the prop’s name is `slot`:
+
+  - Ignore placeholder graphics from Figma (e.g., `Placeholder` frame).
+  - Render the literal string "Placeholder" instead.
+
+- Build on top of Radix UI primitives; never overwrite their classes.
+
+- Use TailwindCSS for style composition and class-variance-authority for managing variants.
+
+- Use the theme for all styling; add variables as needed.
+
+- Only add props present in the Figma spec, with exceptions for technical needs, Radix-controlled props, or those explicitly indicated.
+
+- Implement all SVGs by pasting markup directly into the component’s JSX from source files (not `<img>` tags or runtime fetching), setting `aria-hidden="true"` for decorative use.
+
+# Planning and Verification
+
+- Ensure every new component follows the established file and export structure:
+
+`{ComponentName}.stories.tsx` (Storybook documentation)
+`{ComponentName}.tsx` (main implementation)
+`{ComponentName}.types.ts` (type definitions and variants)
+
+- Each main `.tsx` file must contain only one render function.
+
+- If additional render functions are needed, decompose the component into private subcomponents.
+
+- Private subcomponents must follow the same structure as the main component but be placed in the main component’s folder like `./{ComponentName}/{SubcomponentName}/...`.
+
+- Exports in `src/index.ts` must match:
+
+```ts
+export { {ComponentName} } from './{ComponentName}';
+export type { {ComponentName}Props } from './{ComponentName}.types';
+```
+
+Ask ChatGPT
+
+- Assign `displayName` to each component. Attach a stable data-testid (use the PascalCase component name).
+
+- Add JSDoc to document all components.
+
+- Every component must have a Storybook story using autodocs, with at least one story per variant. Document controls for all public props except for `style`/`data-*`.
+
+- After each code or structural edit, validate the result in 1–2 lines and proceed or self-correct if validation fails; ensure build verification by running `npm run build`.
+
+- Refer to existing components in `src` for patterns and implementation fidelity.
+
+# Output Format
+
+- Use Markdown for documentation, code blocks, and tables where appropriate.
+
+- Name files, directories, functions, and classes in backticks.
+
+- Output summary for verification.
+
+- Output a list of any uncertainties or instruction conflicts you encountered during the task.
+
+# Verbosity
+
+- Default to concise instructions and summaries, except for code, where high verbosity and clarity are expected (fully-typed, commented, and easy to follow).
