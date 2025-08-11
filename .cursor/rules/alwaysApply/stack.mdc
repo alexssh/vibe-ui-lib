@@ -15,6 +15,8 @@ Stack:
 - UI Components: Radix UI
 - Demo and documentation: Storybook
 
+Notice: the package uses React 19 that deprecated forwardRef, avoid using it.
+
 All components live in `src/components/`.
 Each component gets its own directory `src/components/{ComponentName}`.
 Components may contain nested private compomnents like `src/components/{ComponentName}/{SubcomponentName}/`.
