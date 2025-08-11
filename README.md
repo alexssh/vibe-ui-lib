@@ -102,6 +102,12 @@ Add types to your `tsconfig.json` for better development experience:
 
 Remember that prompting is not a one-size-fits-all experience. It is recommended running thorough experiments and iterating to find the best solution for your problem.
 
+One of the most useful instructions I’ve found for identifying problems and debugging (already included in `component_implementation_guidelines.mdc`):
+
+```
+Output a list of any uncertainties, ambiguities, unclear steps, or instruction conflicts you encountered during the task.
+```
+
 ### Adding new components
 
 You can start using the generic component prompt with the `component_implementation_guidelines.mdc` guidelines. The initial prompt may not work exactly as intended; you may need to try several times to get a good result or provide additional instructions:
@@ -129,7 +135,7 @@ Some components require clarification of implementation details due to specifics
 - Provide examples in Storybook and JSDoc documentation on how to set colors with the theme variables.
 ```
 
-`Checkbox` import with additional instructions:
+Sometimes a direct specification of certain dependencies or the required component structure is necessary, as the agent may either not detect available exports from dependent libraries or receive an ambiguous structure from Figma’s response. `Checkbox` import with additional instructions:
 
 ```
 ...
@@ -139,7 +145,9 @@ Some components require clarification of implementation details due to specifics
 - The component named Checkbox that selected in Figma.
 - The component represents a checkbox control + label that a user can select or deselect.
 - Implement the checkbox control as a private subcomponent in the Checkbox folder (not publicly exported).
-- The public Checkbox component controls state for both the control and the label; state changes affect styling (e.g., checked, focused, disabled, error if specified).
+- Import { Checkbox } from "radix-ui" to impletent the control.
+- The indicator is not provided by Figma and should be rendered inside a div with aria-hidden="true" of the CheckboxControl function. Use Icon with glyph="check" to replicate the visual design.
+- The public Checkbox component controls state for both the control and the label; state changes affect styling (e.g., checked, focus, disabled, hover, etc. if specified).
 - Export publicly only Checkbox.
 ```
 
