@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 // NOTE: No Slot/asChild needed for Icon
 
 import type { IconProps } from "./Icon.types"
@@ -77,46 +77,52 @@ const SVG_FACTORIES: Record<Glyph, (color?: string) => string> = {
  * <Icon glyph="bolt" style={{ color: '#ff9900' }} />
  * ```
  */
-const Icon = React.forwardRef<HTMLSpanElement, IconProps>(
-  ({ className, color, glyph = "bolt", size, style, ...rest }, ref) => {
-    // Map provided color prop into inline style as CSS color
-    const mergedStyle = color ? { ...style, color } : style
+const Icon = ({
+  ref,
+  className,
+  color,
+  glyph = "bolt",
+  size,
+  style,
+  ...rest
+}: IconProps) => {
+  // Map provided color prop into inline style as CSS color
+  const mergedStyle = color ? { ...style, color } : style
 
-    // Choose absolute inset based on glyph to match MCP layout
-    const insetMap: Record<NonNullable<IconProps["glyph"]>, string> = {
-      star: "absolute inset-[8.33%_8.33%_12.5%_8.33%]",
-      like: "absolute inset-[11.04%_8.33%_12.5%_8.33%]",
-      check: "absolute bottom-1/4 left-[16.04%] right-[16.04%] top-[24.9%]",
-      arrowDown: "absolute inset-[41.67%_29.17%_37.5%_29.17%]",
-      arrowUp: "absolute inset-[37.5%_29.17%_41.67%_29.17%]",
-      clear: "absolute inset-[16.67%_8.33%]",
-      bolt: "absolute inset-[8.33%_16.67%]",
-    }
-    const insetClass = insetMap[glyph]
+  // Choose absolute inset based on glyph to match MCP layout
+  const insetMap: Record<NonNullable<IconProps["glyph"]>, string> = {
+    star: "absolute inset-[8.33%_8.33%_12.5%_8.33%]",
+    like: "absolute inset-[11.04%_8.33%_12.5%_8.33%]",
+    check: "absolute bottom-1/4 left-[16.04%] right-[16.04%] top-[24.9%]",
+    arrowDown: "absolute inset-[41.67%_29.17%_37.5%_29.17%]",
+    arrowUp: "absolute inset-[37.5%_29.17%_41.67%_29.17%]",
+    clear: "absolute inset-[16.67%_8.33%]",
+    bolt: "absolute inset-[8.33%_16.67%]",
+  }
+  const insetClass = insetMap[glyph]
 
-    const svgMarkup = SVG_FACTORIES[glyph](color)
+  const svgMarkup = SVG_FACTORIES[glyph](color)
 
-    return (
-      <span
-        ref={ref}
-        className={iconVariants({ className, size })}
-        style={mergedStyle}
-        data-testid="Icon"
-        aria-hidden="true"
-        {...rest}
-      >
-        <span className="pointer-events-none absolute left-0 top-0 h-full w-full">
-          <span className={insetClass}>
-            <span
-              className="block size-full"
-              dangerouslySetInnerHTML={{ __html: svgMarkup }}
-            />
-          </span>
+  return (
+    <span
+      ref={ref}
+      className={iconVariants({ className, size })}
+      style={mergedStyle}
+      data-testid="Icon"
+      aria-hidden="true"
+      {...rest}
+    >
+      <span className="pointer-events-none absolute left-0 top-0 h-full w-full">
+        <span className={insetClass}>
+          <span
+            className="block size-full"
+            dangerouslySetInnerHTML={{ __html: svgMarkup }}
+          />
         </span>
       </span>
-    )
-  }
-)
+    </span>
+  )
+}
 
 Icon.displayName = "Icon"
 

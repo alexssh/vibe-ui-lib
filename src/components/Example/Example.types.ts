@@ -48,6 +48,11 @@ export interface ExampleProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof exampleVariants> {
   /**
+   * Ref to the underlying DOM element. React 19 allows passing `ref` as a prop without `forwardRef`.
+   */
+  ref?: React.Ref<HTMLButtonElement>
+
+  /**
    * Change the default rendered element for the one passed as a child, merging their props and behavior.
    *
    * @defaultValue false

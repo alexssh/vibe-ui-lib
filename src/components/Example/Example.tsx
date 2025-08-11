@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import * as Slot from "@radix-ui/react-slot"
 
 import type { ExampleProps } from "./Example.types"
@@ -13,42 +13,36 @@ import { exampleVariants } from "./Example.types"
  *
  * @example
  * ```tsx
- * <Example variant="primary" onClick={() => console.log('clicked')}>
+ * <Example variant="primary" size="small" disabled={false} onClick={() => console.log('clicked')}>
  *   Click me
  * </Example>
  * ```
  */
 
-const Example = React.forwardRef<HTMLButtonElement, ExampleProps>(
-  (
-    {
-      asChild = false,
-      children,
-      className,
-      disabled = false,
-      size,
-      variant,
-      ...rest
-    },
-    ref
-  ) => {
-    const Component = asChild ? Slot.Root : "button"
+const Example = ({
+  ref,
+  asChild = false,
+  children,
+  className,
+  disabled = false,
+  size,
+  variant,
+  ...rest
+}: ExampleProps) => {
+  const Component = asChild ? Slot.Root : "button"
 
-    return (
-      <Component
-        className={exampleVariants({ className, disabled, size, variant })}
-        disabled={disabled}
-        ref={ref}
-        data-testid="example"
-        {...rest}
-      >
-        {children}
-      </Component>
-    )
-  }
-) as React.ForwardRefExoticComponent<
-  ExampleProps & React.RefAttributes<HTMLButtonElement>
->
+  return (
+    <Component
+      className={exampleVariants({ className, disabled, size, variant })}
+      disabled={disabled}
+      ref={ref}
+      data-testid="example"
+      {...rest}
+    >
+      {children}
+    </Component>
+  )
+}
 
 Example.displayName = "Example"
 

@@ -36,6 +36,11 @@ export interface IconProps
   extends Omit<React.HTMLAttributes<HTMLSpanElement>, "children">,
     VariantProps<typeof iconVariants> {
   /**
+   * Ref to the underlying DOM element. React 19 allows passing `ref` as a prop without `forwardRef`.
+   */
+  ref?: React.Ref<HTMLSpanElement>
+
+  /**
    * Which glyph to render.
    * @defaultValue "bolt"
    */
