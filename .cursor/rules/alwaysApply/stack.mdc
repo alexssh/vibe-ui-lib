@@ -13,7 +13,7 @@ Stack:
 - Framework: React.js (TypeScript)
 - Styling: TailwindCSS
 - UI Components: Radix UI
-- Icons: Custom
+- Demo and documentation: Storybook
 
 All components live in `src/components/`.
 Each component gets its own directory `src/components/{ComponentName}`.
