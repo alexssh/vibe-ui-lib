@@ -13,7 +13,7 @@ The repo comes with a preconfigured infrastructure:
 
 General guidelines for working with the package are included in `.cursor/rules/alwaysApply`.
 
-Case-specific rules, such as `.cursor/rules/new_component.mdc` for adding new components, are also provided (requires manual activation).
+Case-specific rules, such as `.cursor/rules/component_implementation_guidelines.mdc` for adding new components, are also provided (requires manual activation).
 
 - [Demo](https://alexssh.github.io/vibe-ui-lib/)
 - [Figma library file (source)](https://www.figma.com/design/QbK6Oyz6JR1lKLZNqPvzr8/Vibe-UI-Lib?node-id=0-1&t=3Y07vxxsmtbpHwAM-1)
@@ -100,25 +100,83 @@ Add types to your `tsconfig.json` for better development experience:
 
 ## Prompts
 
-Component import
+Remember that prompting is not a one-size-fits-all experience. It is recommended running thorough experiments and iterating to find the best solution for your problem.
+
+### Adding new components
+
+You can start using the generic component prompt with the `component_implementation_guidelines.mdc` guidelines. The initial prompt may not work exactly as intended; you may need to try several times to get a good result or provide additional instructions:
+
+```
+# Task
+
+- Your task is to add a new component to the UI library.
+- You must source design assets and raw structure from Figma via MCP. Pay attention to Figma MCP's conventions for component nesting and naming.
+- The component must follow the standard library and guidelines.
+```
+
+Some components require clarification of implementation details due to specifics of the Figma MCP response. For instance, importing the `Icon` component with correct scaling of SVG elements:
+
+```
+# Task
+...
+
+## Additional instructions for completing the task
+
+- The component named Icon that selected in Figma.
+- The component is a container for SVG icons that inherits its colour from the theme (e.g., `color-neutral-icon-default`) but can be set manually via a component property.
+- The container must have a one fixed size of 24px × 24px.
+- SVG paths must match the viewBox property (some of the SVG icons may be smaller than 24x24px), so that use absolute positioning from MCP response to align them properly within the container (e.g. `inset-[8.33%_8.33%_12.5%_8.33%]`)
+- Provide examples in Storybook and JSDoc documentation on how to set colors with the theme variables.
+```
+
+`Checkbox` import with additional instructions:
 
 ```
 ...
+
+## Additional instructions for completing the task
+
+- The component named Checkbox that selected in Figma.
+- The component represents a checkbox control + label that a user can select or deselect.
+- Implement the checkbox control as a private subcomponent in the Checkbox folder (not publicly exported).
+- The public Checkbox component controls state for both the control and the label; state changes affect styling (e.g., checked, focused, disabled, error if specified).
+- Export publicly only Checkbox.
 ```
 
-Some components require clarification of implementation details due to specifics of the Figma MCP response. For instance, importing the Icon component with correct scaling of SVG elements:
-
-```
-Add a new component named Icon that selected in Figma.
-The component is a container for SVG icons that inherits its colour from the theme (e.g., `color-neutral-icon-default`) but can be set manually via a component property.
-The container must have a one fixed size of 24px × 24px.
-SVG paths must match the viewBox property (some of the SVG icons may be smaller than 24x24px), so that use absolute positioning from MCP response to align them properly within the container (e.g. `inset-[8.33%_8.33%_12.5%_8.33%]`)
-Provide examples in Storybook and JSDoc documentation on how to set colors with the theme variables.
-The component must follow the standard library and guidelines.
-```
-
-## Tips
+Even a good result might need refinement and you can request refactoring or simplification. So it’s important to understand the outcome of what the agent has produced ans the agent to fix it:
 
 - Review the reasoning. It can sometimes reveal issues in the instructions.
-- The initial prompt may not work exactly as intended; you may need to try several times to get a good result.
-- Even a good result might need refinement and you can request refactoring or simplification. So it’s important to understand the outcome of what the agent has produced.
+- Check what Figma returns via the `get_code` request, and ask the agent to explain what a specific piece of code does to refine the prompt.
+- Suggest ignoring certain properties or features retrieved from Figma, or interpreting them differently.
+
+### Modifying existing components
+
+When modifying a component in Figma, it is better to use the new prompt to maintain backward compatibility:
+
+```
+# Task
+
+- Your task is to modify the Button component.
+- You must source the design assets and raw structure from Figma via MCP.
+- Note that the component’s structure and styles have changed. Compare the current implementation with the updated design, and apply the changes in properties, strcture, styles.
+- The component must follow the standard library and guidelines.
+
+## Additional instructions for completing the task
+
+- The component is used across other projects, so you must maintain backward compatibility for properties.
+- Avoid breaking changes to public props and events.
+- If a change is unavoidable, provide a graceful fallback, deprecate old APIs with warnings, and document the migration path.
+- Preserve existing class names, data attributes, and test IDs where possible.
+
+```
+
+It is better to provide separate instructions for modification and explain the changes so that the agent can deliver more accurately:
+
+```
+...
+- Treat the icon and content properties as children elements. In Storybook, provide examples demonstrating all combinations: text only, text + Icon, Icon + text, Icon only.
+- Ignore the container around the button text. It is only used for convenience in Figma.
+- The Icon component colour must match the Button's text colour and its states when passed as a child.
+- Set the default gap between children: default size - 8px, small size - 4px.
+- The button should have a defined minimum width: defaul size - 48px, small size - 32px.
+```
