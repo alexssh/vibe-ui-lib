@@ -26,7 +26,13 @@ alwaysApply: false
 
 - Only add props present in the Figma spec, with exceptions for technical needs, Radix-controlled props, or those explicitly indicated.
 
+- Use `focus-visible:` preudo class to reproduce the `focus` state.
+
+- Use `outline` classes to reproduce border of the `focus` state.
+
 - Implement all SVGs by pasting markup directly into the component’s JSX from source files (not `<img>` tags or runtime fetching), setting `aria-hidden="true"` for decorative use.
+
+- Avoid any animations and trasitions until explicitly requested.
 
 # Planning and Verification
 
@@ -35,12 +41,11 @@ alwaysApply: false
 `{ComponentName}.stories.tsx` (Storybook documentation)
 `{ComponentName}.tsx` (main implementation)
 `{ComponentName}.types.ts` (type definitions and variants)
+`/{SubcomponentName}` (dependent subcomponents)
 
-- Each main `.tsx` file must contain only one render function.
+- Each `{ComponentName}.tsx` or `{SubcomponentName}.tsx` file must contain only one render function; move additional logic into private subcomponents.
 
-- If additional render functions are needed, decompose the component into private subcomponents.
-
-- Private subcomponents must follow the same structure as the main component but be placed in the main component’s folder like `./{ComponentName}/{SubcomponentName}/...`.
+- Organize private subcomponents within their parent component’s folder (`./{ComponentName}/{SubcomponentName}/{SubcomponentName}.tsx`).
 
 - Exports in `src/index.ts` must match:
 
@@ -48,8 +53,6 @@ alwaysApply: false
 export { {ComponentName} } from './{ComponentName}';
 export type { {ComponentName}Props } from './{ComponentName}.types';
 ```
-
-Ask ChatGPT
 
 - Assign `displayName` to each component. Attach a stable data-testid (use the PascalCase component name).
 
@@ -69,7 +72,7 @@ Ask ChatGPT
 
 - Output summary for verification.
 
-- Output a list of any uncertainties or instruction conflicts you encountered during the task.
+- Output a list of any uncertainties, ambiguities, unclear steps, or instruction conflicts you encountered during the task.
 
 # Verbosity
 
