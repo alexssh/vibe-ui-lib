@@ -2,6 +2,7 @@ import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { Button } from "./Button"
 import type { ButtonProps } from "./Button.types"
+import { Icon } from "../Icon"
 
 /**
  * Example component stories.
@@ -90,24 +91,55 @@ export const Disabled: Story = {
   },
 }
 
-/**
- * Example using asChild prop to render as a link.
- */
-export const AsLink: Story = {
-  args: {
-    asChild: true,
-    children: <a href="https://example.com">Link Button</a>,
-    variant: "primary",
-  },
+// Composition stories
+export const TextOnlyDefault: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <Button size="default">Button</Button>
+      <Button size="small">Button</Button>
+    </div>
+  ),
 }
 
-/**
- * Example using asChild prop to render as a div.
- */
-export const AsDiv: Story = {
-  args: {
-    asChild: true,
-    children: <div>Div Button</div>,
-    variant: "secondary",
-  },
+export const IconThenText: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <Button size="default">
+        <Icon glyph="bolt" />
+        Button
+      </Button>
+      <Button size="small">
+        <Icon glyph="bolt" />
+        Button
+      </Button>
+    </div>
+  ),
+}
+
+export const TextThenIcon: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <Button size="default">
+        Button
+        <Icon glyph="bolt" />
+      </Button>
+      <Button size="small">
+        Button
+        <Icon glyph="bolt" />
+      </Button>
+    </div>
+  ),
+}
+
+export const IconOnly: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <Button size="default" aria-label="Settings">
+        <Icon glyph="bolt" />
+      </Button>
+      <Button size="small" aria-label="Settings">
+        <Icon glyph="bolt" />
+      </Button>
+    </div>
+  ),
 }

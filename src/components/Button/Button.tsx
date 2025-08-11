@@ -39,7 +39,26 @@ const Button = ({
       data-testid="Button"
       {...rest}
     >
-      {children}
+      {React.Children.map(children, (child) => {
+        if (!React.isValidElement(child))
+          return <span className="px-1">{child}</span>
+        type TypeWithDisplayName = { displayName?: string }
+        const typeWithName = child.type as unknown as TypeWithDisplayName
+        const isIconLike = typeWithName?.displayName === "Icon"
+
+        if (isIconLike) {
+          const existingClass =
+            (child.props as { className?: string }).className ?? ""
+          const mergedClassName = `${existingClass} text-current`.trim()
+          return React.cloneElement(
+            child as React.ReactElement<Record<string, unknown>>,
+            {
+              className: mergedClassName,
+            }
+          )
+        }
+        return child
+      })}
     </Component>
   )
 }

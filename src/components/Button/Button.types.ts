@@ -3,7 +3,7 @@ import { type VariantProps } from "class-variance-authority"
 import { cva } from "class-variance-authority"
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-sm truncate text-[15px] font-semibold cursor-pointer focus-visible:outline-none disabled:pointer-events-none",
+  "inline-flex items-center justify-center rounded truncate text-[15px] font-semibold cursor-pointer disabled:pointer-events-none",
   {
     variants: {
       disabled: {
@@ -11,14 +11,14 @@ export const buttonVariants = cva(
         false: "",
       },
       size: {
-        default: "h-12 px-4 gap-2",
-        small: "h-9 px-3 gap-1",
+        default: "h-12 min-w-12 px-3 gap-1",
+        small: "h-8 min-w-8 px-1 gap-0",
       },
       variant: {
         primary:
-          "bg-accented-bg-interactive text-accented-text-interactive hover:bg-accented-bg-interactive-hover hover:text-accented-text-interactive-hover focus-visible:bg-accented-bg-interactive-focus focus-visible:text-accented-text-interactive-focus focus-visible:border-2 focus-visible:border-accented-border-interactive-focus",
+          "bg-accented-bg-interactive text-accented-text-interactive hover:bg-accented-bg-interactive-hover hover:text-accented-text-interactive-hover focus-visible:bg-accented-bg-interactive-focus focus-visible:text-accented-text-interactive-focus focus-visible:outline-2 focus-visible:outline-accented-border-interactive-focus",
         secondary:
-          "bg-neutral-bg-interactive text-neutral-text-interactive border border-neutral-border-interactive hover:bg-neutral-bg-interactive-hover hover:text-neutral-text-interactive-hover hover:border-neutral-border-interactive-hover focus-visible:bg-neutral-bg-interactive-focus focus-visible:text-neutral-text-interactive-focus focus-visible:border-2 focus-visible:border-neutral-border-interactive-focus",
+          "bg-neutral-bg-interactive text-neutral-text-interactive border border-neutral-border-interactive hover:bg-neutral-bg-interactive-hover hover:text-neutral-text-interactive-hover hover:border-neutral-border-interactive-hover focus-visible:border-transparent focus-visible:bg-neutral-bg-interactive-focus focus-visible:text-neutral-text-interactive-focus focus-visible:outline-2 focus-visible:outline-neutral-border-interactive-focus",
       },
     },
     compoundVariants: [
@@ -32,7 +32,7 @@ export const buttonVariants = cva(
         variant: "secondary",
         disabled: true,
         class:
-          "disabled:bg-neutral-bg-interactive-disabled disabled:text-neutral-text-interactive-disabled disabled:border-none",
+          "disabled:bg-neutral-bg-interactive-disabled disabled:text-neutral-text-interactive-disabled disabled:outline-none",
       },
     ],
     defaultVariants: {
