@@ -46,7 +46,7 @@ export const Default: Story = {
 
 export const WithHtmlFor: Story = {
   render: () => (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col">
       <Label htmlFor="email">Email</Label>
       <input
         id="email"

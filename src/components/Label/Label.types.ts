@@ -3,7 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 // Base visual extracted from Figma MCP for Label
 export const labelVariants = cva(
-  "block text-[14px] leading-[18px] font-normal not-italic text-[color:var(--color-neutral-text-secondary)]"
+  "block text-[14px] leading-[18px] font-normal not-italic text-[color:var(--color-neutral-text-secondary)] pb-2"
 )
 
 export interface LabelProps
