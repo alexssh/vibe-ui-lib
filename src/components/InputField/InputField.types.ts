@@ -35,7 +35,7 @@ export const inputFieldVariants = cva(
     // disabled
     "disabled:text-neutral-text-interactive-disabled",
     // placeholder color
-    "placeholder:text-[color:var(--color-neutral-text-secondary)] disabled:placeholder:text-neutral-text-interactive-disabled",
+    "placeholder:text-[color:var(--color-neutral-text-interactive-placeholder)] disabled:placeholder:text-neutral-text-interactive-disabled",
   ].join(" ")
 )
 

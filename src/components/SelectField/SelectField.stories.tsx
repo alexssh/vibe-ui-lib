@@ -36,7 +36,6 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   render: (args) => (
     <SelectField {...args}>
-      <option value="">Select an option</option>
       <option value="alpha">Alpha</option>
       <option value="bravo">Bravo</option>
       <option value="charlie">Charlie</option>
@@ -48,13 +47,11 @@ export const Disabled: Story = {
   render: () => (
     <div className="flex flex-col gap-2">
       <SelectField disabled>
-        <option value="">Select an option</option>
         <option value="alpha">Alpha</option>
         <option value="bravo">Bravo</option>
         <option value="charlie">Charlie</option>
       </SelectField>
       <SelectField value="bravo" disabled>
-        <option value="">Select an option</option>
         <option value="alpha">Alpha</option>
         <option value="bravo">Bravo</option>
         <option value="charlie">Charlie</option>
@@ -69,7 +66,6 @@ export const Controlled: Story = {
     return (
       <div className="flex flex-col gap-1">
         <SelectField value={val} onChange={(e) => setVal(e.target.value)}>
-          <option value="">Select an option</option>
           <option value="alpha">Alpha</option>
           <option value="bravo">Bravo</option>
           <option value="charlie">Charlie</option>
@@ -84,7 +80,6 @@ export const WithLabelAndHint: Story = {
     <div className="flex flex-col gap-1">
       <Label>Country</Label>
       <SelectField defaultValue="">
-        <option value="">Select an option</option>
         <option value="alpha">Alpha</option>
         <option value="bravo">Bravo</option>
         <option value="charlie">Charlie</option>
@@ -99,7 +94,6 @@ export const WithLabelAndError: Story = {
     <div className="flex flex-col gap-1">
       <Label>Country</Label>
       <SelectField defaultValue="" error>
-        <option value="">Select an option</option>
         <option value="alpha">Alpha</option>
         <option value="bravo">Bravo</option>
         <option value="charlie">Charlie</option>

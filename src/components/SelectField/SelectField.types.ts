@@ -30,7 +30,7 @@ export const selectFieldVariants = cva(
     // disabled value color
     "disabled:text-neutral-text-interactive-disabled",
     // placeholder
-    "placeholder:text-[color:var(--color-neutral-text-secondary)] disabled:placeholder:text-neutral-text-interactive-disabled",
+    "placeholder:text-[color:var(--color-neutral-text-interactive-placeholder)] disabled:placeholder:text-neutral-text-interactive-disabled",
   ].join(" ")
 )
 
