@@ -108,6 +108,8 @@ One of the most useful instructions I’ve found for identifying problems and de
 Output a list of any uncertainties, ambiguities, unclear steps, or instruction conflicts you encountered during the task.
 ```
 
+Also, with a larger codebase and established, well-tested references, subsequent component additions proceed more smoothly.
+
 ### Adding new components
 
 You can start using the generic component prompt with the `component_implementation_guidelines.mdc` guidelines. The initial prompt may not work exactly as intended; you may need to try several times to get a good result or provide additional instructions:
@@ -149,6 +151,20 @@ Sometimes a direct specification of certain dependencies or the required compone
 - The indicator is not provided by Figma and should be rendered inside a div with aria-hidden="true" of the CheckboxControl function. Use Icon with glyph="check" to replicate the visual design.
 - The public Checkbox component controls state for both the control and the label; state changes affect styling (e.g., checked, focus, disabled, hover, etc. if specified).
 - Export publicly only Checkbox.
+```
+
+You can also reference styling from other implemented components:
+
+```
+...
+
+## Additional instructions for completing the task
+
+- The component named SelectField that selected in Figma.
+- It is a basic select input with options. The component is supposed to used in different forms or in companation with Label or Hint.
+- Use the standard HTML implementation for option. Provide some options in stories.
+- The component contain the dropdown button that can be implemented within the main component (not a subcomponent).
+- Copy InputField style classes to reproduce states for SelectField, avoid dependencies.
 ```
 
 Even a good result might need refinement and you can request refactoring or simplification. So it’s important to understand the outcome of what the agent has produced ans the agent to fix it:
