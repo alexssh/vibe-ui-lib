@@ -11,8 +11,7 @@ The repo comes with a preconfigured infrastructure:
 - UI Components: Radix UI
 - Demo & Documentation: Storybook
 
-General guidelines for working with the package are included in `.cursor/rules/alwaysApply`.
-
+General agent guidelines for working with the package are included in `.cursor/rules/alwaysApply`.
 Case-specific rules, such as `.cursor/rules/component_implementation_guidelines.mdc` for adding new components, are also provided (requires manual activation).
 
 - [Demo](https://alexssh.github.io/vibe-ui-lib/)
