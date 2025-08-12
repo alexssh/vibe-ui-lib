@@ -74,17 +74,17 @@ Add types to your `tsconfig.json` for better development experience:
   import 'vibe-ui-lib/dist/style.css';
 
   // Import components
-  import { Example } from 'vibe-ui-lib';
+  import { Button } from 'vibe-ui-lib';
 
   // Basic usage
-  <Example variant="primary" onClick={() => console.log('clicked')}>
+  <Button variant="primary" onClick={() => console.log('clicked')}>
     Click me
-  </Example>
+  </Button>
 
   // With asChild for flexible rendering
-  <Example variant="primary" asChild>
+  <Button variant="primary" asChild>
     <a href="https://example.com">Link Button</a>
-  </Example>
+  </Button>
 ```
 
 ## Figma file organization
