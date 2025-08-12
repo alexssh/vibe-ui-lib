@@ -17,6 +17,8 @@ export const inputContainerVariants = cva(
     "[&:has(button[data-clearbutton]:focus)]:outline-none [&:has(button[data-clearbutton]:focus-visible)]:outline-none",
     "[&:has(button[data-clearbutton]:focus)]:outline-transparent [&:has(button[data-clearbutton]:focus-visible)]:outline-transparent",
     "[&:has(button[data-clearbutton]:focus)]:border-neutral-border-interactive [&:has(button[data-clearbutton]:focus-visible)]:border-neutral-border-interactive",
+    // error state outline (2px red) and hide default border
+    "data-[error=true]:outline-2 data-[error=true]:outline-[color:var(--color-neutral-text-error)] data-[error=true]:border-transparent",
   ].join(" ")
 )
 
@@ -55,4 +57,10 @@ export interface InputFieldProps
    * @defaultValue true
    */
   showClear?: boolean
+
+  /**
+   * Visual error state. Adds a red outline and sets aria-invalid when not provided by user.
+   * @defaultValue false
+   */
+  error?: boolean
 }

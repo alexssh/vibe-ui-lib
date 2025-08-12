@@ -2,6 +2,8 @@ import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { InputField } from "./InputField"
 import type { InputFieldProps } from "./InputField.types"
+import { Label } from "../Label"
+import { Hint } from "../Hint"
 
 const meta: Meta<InputFieldProps> = {
   title: "Components/InputField",
@@ -10,44 +12,18 @@ const meta: Meta<InputFieldProps> = {
   parameters: {
     docs: {
       description: {
-        component: "Basic input field with optional clear button.",
+        component:
+          "Basic text input with optional clear button and error state.",
       },
     },
   },
   argTypes: {
-    className: {
-      control: { type: "text" },
-      description: "Additional CSS classes",
-    },
-    value: {
-      control: { type: "text" },
-      description: "Controlled input value",
-    },
-    defaultValue: {
-      control: { type: "text" },
-      description: "Uncontrolled default value",
-    },
-    placeholder: {
-      control: { type: "text" },
-      description: "Placeholder text",
-    },
-    disabled: {
-      control: { type: "boolean" },
-      description: "Whether the input is disabled",
-    },
-    onChange: {
-      action: "changed",
-      description: "Fires when the values changes",
-    },
-    showClear: {
-      control: { type: "boolean" },
-      description: "Toggle clear button visibility",
-      defaultValue: true,
-    },
-    onClear: {
-      action: "cleared",
-      description: "Called when the clear button is pressed",
-    },
+    className: { control: { type: "text" } },
+    disabled: { control: { type: "boolean" } },
+    showClear: { control: { type: "boolean" }, defaultValue: true },
+    error: { control: { type: "boolean" } },
+    onChange: { action: "changed", description: "Value change" },
+    onClear: { action: "cleared", description: "Clear button clicked" },
   },
 }
 
@@ -55,26 +31,40 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Empty: Story = {
-  args: {
-    placeholder: "Placeholder",
-  },
+  args: { placeholder: "Placeholder" },
 }
 
 export const WithValue: Story = {
-  args: {
-    defaultValue: "Value",
-  },
+  args: { defaultValue: "Value" },
 }
 
 export const Disabled: Story = {
-  render: () => {
-    return (
-      <div className="flex flex-col gap-2">
-        <InputField placeholder={"Disabled placeholder"} disabled />
-        <InputField value={"Disabled value"} disabled />
-      </div>
-    )
-  },
+  render: () => (
+    <div className="flex flex-col gap-2">
+      <InputField placeholder="Disabled placeholder" disabled />
+      <InputField value="Disabled value" disabled />
+    </div>
+  ),
+}
+
+export const ErrorWithLabelAndHint: Story = {
+  render: () => (
+    <div className="flex flex-col gap-1">
+      <Label>Email</Label>
+      <InputField defaultValue="invalid@" error />
+      <Hint variant="error">Please enter a valid email</Hint>
+    </div>
+  ),
+}
+
+export const WithLabelAndHint: Story = {
+  render: () => (
+    <div className="flex flex-col gap-1">
+      <Label>Username</Label>
+      <InputField placeholder="Type your username" />
+      <Hint>Use 3–16 characters</Hint>
+    </div>
+  ),
 }
 
 export const ControlledWithClear: Story = {

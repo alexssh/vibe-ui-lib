@@ -16,6 +16,7 @@ const InputField = ({
   onClear,
   showClear = true,
   disabled,
+  error = false,
   value,
   defaultValue,
   onChange,
@@ -47,11 +48,13 @@ const InputField = ({
       className={inputContainerVariants({ className })}
       data-testid="InputField"
       data-disabled={disabled ? "true" : undefined}
+      data-error={error ? "true" : undefined}
     >
       <input
         ref={ref}
         className={inputFieldVariants({})}
         disabled={disabled}
+        aria-invalid={rest["aria-invalid"] ?? (error ? true : undefined)}
         value={currentValue}
         onChange={handleChange}
         placeholder={placeholder}
