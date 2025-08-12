@@ -30,19 +30,19 @@ const meta: Meta<CardProps> = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+export const Default: Story = {
+  args: {},
+}
+
 export const WithSlotProp: Story = {
   args: {
     slot: (
       <div className="flex w-full flex-col gap-2 px-4">
         <h3 className="text-[21px] font-semibold">Slot Title</h3>
-        <p className="text-[15px] text-[color:var(--color-neutral-text-secondary)]">
+        <p className="text-[16px] leading-[20px] text-[color:var(--color-neutral-text-secondary)]">
           Provided via slot prop
         </p>
       </div>
     ),
   },
-}
-
-export const EmptyShowsPlaceholder: Story = {
-  args: {},
 }

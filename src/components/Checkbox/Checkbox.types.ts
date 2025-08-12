@@ -19,7 +19,7 @@ export const checkboxContainerVariants = cva(
 
 // Label text styles
 export const checkboxLabelVariants = cva(
-  "text-[15px] text-[color:var(--color-neutral-text-interactive)]",
+  "text-[16px] leading-[20px] text-[color:var(--color-neutral-text-interactive)]",
   {
     variants: {
       checked: {
