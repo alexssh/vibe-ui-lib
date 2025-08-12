@@ -35,6 +35,10 @@ const meta: Meta<InputFieldProps> = {
       control: { type: "boolean" },
       description: "Whether the input is disabled",
     },
+    onChange: {
+      action: "changed",
+      description: "Fires when the values changes",
+    },
     showClear: {
       control: { type: "boolean" },
       description: "Toggle clear button visibility",
