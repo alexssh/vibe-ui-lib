@@ -139,6 +139,7 @@ Some components require clarification of implementation details due to specifics
 Sometimes a direct specification of certain dependencies or the required component structure is necessary, as the agent may either not detect available exports from dependent libraries or receive an ambiguous structure from Figma’s response. `Checkbox` import with additional instructions:
 
 ```
+# Task
 ...
 
 ## Additional instructions for completing the task
@@ -155,6 +156,7 @@ Sometimes a direct specification of certain dependencies or the required compone
 You can also reference styling from other implemented components:
 
 ```
+# Task
 ...
 
 ## Additional instructions for completing the task
@@ -196,7 +198,12 @@ When modifying a component in Figma, it is better to use the new prompt to maint
 It is better to provide separate instructions for modification and explain the changes so that the agent can deliver more accurately:
 
 ```
+# Task
 ...
+
+## Additional instructions for completing the task
+...
+
 - Treat the icon and content properties as children elements. In Storybook, provide examples demonstrating all combinations: text only, text + Icon, Icon + text, Icon only.
 - Ignore the container around the button text. It is only used for convenience in Figma.
 - The Icon component colour must match the Button's text colour and its states when passed as a child.
